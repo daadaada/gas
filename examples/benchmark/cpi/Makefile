@@ -3,7 +3,7 @@ NAME = benchmark
 GAS = $(GAS_HOME)/build/gas
 
 all:
-	$(GAS) $(NAME).dada -o $(NAME).cubin
+	$(GAS) $(NAME).gas -o $(NAME).cubin
 	nvcc main.cu -lcuda -arch=sm_$(ARCH) -o $(NAME)
 
 clean:
