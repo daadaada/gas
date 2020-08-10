@@ -1,0 +1,839 @@
+/*
+  blocking size: 128x128x8
+  # threads: 32*2*4 = 256
+  # smem: 128*8*2*sizeof(float) = 8KB (16 KB for double buffering)
+*/
+
+sgemm_128x128_nt(s64 A, s64 B, s64 C,
+  s32 m, s32 n, s32 k
+){
+  
+
+  f32 .v4 a0[8];
+  f32 .v4 b0[8];
+  f32 .v4 a1[8];
+  f32 .v4 b1[8];
+  f32 .v4 c[64];
+  
+  f32 .v4 A_fragment[4];
+  f32 .v4 B_fragment[4];
+  
+  s32 lane, warp;
+  s32 bid_x, bid_y, bid_z;
+  s2r lane, threadIdx_x;
+  s2r warp, threadIdx_y;
+  s2r bid_x, blockIdx_x;
+  s2r bid_y, blockIdx_y;
+  s2r bid_z, blockIdx_z;
+
+  s32 blk_x, blk_y;
+  // blk_x = bid_x + bid_z*gridDim_x;
+  imad blk_x, bid_z, gridDim_x, bid_x;
+  // blk_y = ...
+  // s32 bid_zm2;
+  // pred is_odd;
+  // lop3.lut bid_zm2, bid_z, 1, rz, 192;
+  // isetp.eq.and is_odd, pt, bid_zm2, 1, pt;
+  mov blk_y, bid_y;
+  // @is_odd iadd3 blk_y, -bid_y, gridDim_y, rz;
+  // @is_odd iadd3 blk_y, blk_y, -1, rz;
+  
+  s32 size_float, size_float_8;
+  s32 loadA_stride, loadB_stride;
+  mov size_float, 4; // 2
+  imad size_float_8, size_float, 8, rz;
+  
+  
+  
+  
+  // loadA & loadB
+  s64 loadA_ptr, loadB_ptr;
+  s32 loadA_offset, loadB_offset;
+  s32 x_g, y_g, lane4;
+  imad lane4, lane, 4, rz;
+  imad x_g, blk_x, 128, lane4;
+  imad y_g, blk_y, 128, lane4;
+  imad loadA_offset, warp, m, x_g;
+  imad loadB_offset, warp, n, y_g;
+  
+  imad.wide loadA_ptr, loadA_offset, size_float, A;
+  imad.wide loadB_ptr, loadB_offset, size_float, B;
+  
+  ldg.128.strong.gpu A_fragment[0:3], [loadA_ptr];
+  ldg.128.strong.gpu B_fragment[0:3], [loadB_ptr];
+  
+  
+  
+  // storeAs_ptr & storeBs_ptr
+  s32 storeAs_ptr, storeBs_ptr;
+  shf.l storeAs_ptr, lane, 2, rz;
+  imad storeAs_ptr, warp, 128, storeAs_ptr;
+  shf.l storeAs_ptr, storeAs_ptr, 2, rz;
+  iadd3 storeBs_ptr, storeAs_ptr, 4096, rz;
+  
+  // loadAs_ptr & loadBs_ptr
+  s32 loadAs_ptr, loadBs_ptr;
+  s32 warp_x, warp_y, lane_x, lane_y;
+  s32 lane_m16, lane_d16, lane_m16_m2;
+  lop3.lut lane_m16, lane, 15, rz, 192;
+  shf.r lane_d16, lane, 4, rz;
+  // // lane_x = lane%16/2
+  shf.r lane_x, lane_m16, 1, rz;
+  // lane_y = lane/16*2 + lane%16%2;
+  shf.l lane_y, lane_d16, 1, rz;
+  lop3.lut lane_m16_m2, lane_m16, 1, rz, 192;
+  iadd3 lane_y, lane_y, lane_m16_m2, rz;
+  // warp_x = warp%2; warp_y = warp/2
+  lop3.lut warp_x, warp, 1, rz, 192;
+  shf.r warp_y, warp, 1, rz;
+  // loadAs_ptr = (warp_x*64 + lane_x*4) *4;
+  shf.l loadAs_ptr, lane_x, 2, rz;
+  imad loadAs_ptr, warp_x, 64, loadAs_ptr;
+  shf.l loadAs_ptr, loadAs_ptr, 2, rz;
+  // loadBs_ptr = (warp_y*32 + lane_y*4 + 1024) * 4;
+  mov loadBs_ptr, 1024;
+  imad loadBs_ptr, lane_y, 4, loadBs_ptr;
+  imad loadBs_ptr, warp_y, 32, loadBs_ptr;
+  shf.l loadBs_ptr, loadBs_ptr, 2, rz;
+  
+  s32 storeC_offset, c_x, c_y;
+  // int c_x = blockIdx_x*128 + warp_x*64 + lane_x*4; 
+  // int c_y = blockIdx_y*128 + warp_y*32 + lane_y*4;
+  // int storeC_offset = c_x + c_y*m;
+  imad c_x, lane_x, 4, rz;
+  imad c_x, warp_x, 64, c_x;
+  imad c_x, blk_x, 128, c_x;
+  
+  imad c_y, lane_y, 4, rz;
+  imad c_y, warp_y, 32, c_y;
+  imad c_y, blk_y, 128, c_y;
+  
+  imad storeC_offset, c_y, m, c_x;
+  
+  
+  mov c[0], rz;
+  mov c[1], rz;
+  mov c[2], rz;
+  mov c[3], rz;
+  mov c[4], rz;
+  mov c[5], rz;
+  mov c[6], rz;
+  mov c[7], rz;
+  mov c[8], rz;
+  mov c[9], rz;
+  mov c[10], rz;
+  mov c[11], rz;
+  mov c[12], rz;
+  mov c[13], rz;
+  mov c[14], rz;
+  mov c[15], rz;
+  mov c[16], rz;
+  mov c[17], rz;
+  mov c[18], rz;
+  mov c[19], rz;
+  mov c[20], rz;
+  mov c[21], rz;
+  mov c[22], rz;
+  mov c[23], rz;
+  mov c[24], rz;
+  mov c[25], rz;
+  mov c[26], rz;
+  mov c[27], rz;
+  mov c[28], rz;
+  mov c[29], rz;
+  mov c[30], rz;
+  mov c[31], rz;
+  mov c[32], rz;
+  mov c[33], rz;
+  mov c[34], rz;
+  mov c[35], rz;
+  mov c[36], rz;
+  mov c[37], rz;
+  mov c[38], rz;
+  mov c[39], rz;
+  mov c[40], rz;
+  mov c[41], rz;
+  mov c[42], rz;
+  mov c[43], rz;
+  mov c[44], rz;
+  mov c[45], rz;
+  mov c[46], rz;
+  mov c[47], rz;
+  mov c[48], rz;
+  mov c[49], rz;
+  mov c[50], rz;
+  mov c[51], rz;
+  mov c[52], rz;
+  mov c[53], rz;
+  mov c[54], rz;
+  mov c[55], rz;
+  mov c[56], rz;
+  mov c[57], rz;
+  mov c[58], rz;
+  mov c[59], rz;
+  mov c[60], rz;
+  mov c[61], rz;
+  mov c[62], rz;
+  mov c[63], rz;
+  
+  
+  
+  
+  sts.128 [storeAs_ptr], A_fragment[0:3];
+  sts.128 [storeBs_ptr], B_fragment[0:3];
+  
+  
+  
+  
+  bar.sync;
+  
+  // k=0
+  
+  lds.128 a0[0:3], [loadAs_ptr];
+  lds.128 a0[4:7], [loadAs_ptr+128];
+  lds.128 b0[0:3], [loadBs_ptr+0];
+  lds.128 b0[4:7], [loadBs_ptr+64];
+  
+  lop3.lut storeAs_ptr, storeAs_ptr, 8192, rz, 60;
+  lop3.lut storeBs_ptr, storeBs_ptr, 8192, rz, 60;
+  
+  
+  pred p0;
+  s32 k_local;
+  mov k_local, 8;
+
+ 
+  l1:
+  isetp.lt.and p0, pt, k_local, k, pt;
+  ffma c[0], a0[0], b0[0], c[0];
+  ffma c[1], a0[1], b0[0], c[1];
+  iadd3 k_local, k_local, 8, rz;
+  lds.128 a1[0:3], [loadAs_ptr+512];
+  ffma c[2], a0[2], b0[0], c[2];
+  ffma c[3], a0[3], b0[0], c[3];
+  lds.128 a1[4:7], [loadAs_ptr+640];
+  ffma c[4], a0[4], b0[0], c[4];
+  ffma c[5], a0[5], b0[0], c[5];
+  lds.128 b1[0:3], [loadBs_ptr+512];
+  ffma c[6], a0[6], b0[0], c[6];
+  ffma c[7], a0[7], b0[0], c[7];
+  lds.128 b1[4:7], [loadBs_ptr+576];
+  ffma c[8], a0[0], b0[1], c[8];
+  ffma c[9], a0[1], b0[1], c[9];
+  ffma c[10], a0[2], b0[1], c[10];
+  ffma c[11], a0[3], b0[1], c[11];
+  
+  ffma c[12], a0[4], b0[1], c[12];
+  ffma c[13], a0[5], b0[1], c[13];
+  ffma c[14], a0[6], b0[1], c[14];
+  ffma c[15], a0[7], b0[1], c[15];
+  
+  
+  ffma c[16], a0[0], b0[2], c[16];
+  ffma c[17], a0[1], b0[2], c[17];
+  ffma c[18], a0[2], b0[2], c[18];
+  ffma c[19], a0[3], b0[2], c[19];
+  
+  ffma c[20], a0[4], b0[2], c[20];
+  ffma c[21], a0[5], b0[2], c[21];
+  
+  ffma c[22], a0[6], b0[2], c[22];
+  ffma c[23], a0[7], b0[2], c[23];
+  @p0 imad.wide loadA_ptr, size_float_8, m, loadA_ptr;
+  ffma c[24], a0[0], b0[3], c[24];
+  ffma c[25], a0[1], b0[3], c[25];
+  ffma c[26], a0[2], b0[3], c[26];
+  ffma c[27], a0[3], b0[3], c[27];
+  
+  ffma c[28], a0[4], b0[3], c[28];
+  ffma c[29], a0[5], b0[3], c[29];
+  ffma c[30], a0[6], b0[3], c[30];
+  ffma c[31], a0[7], b0[3], c[31];
+  ffma c[32], a0[0], b0[4], c[32];
+  ffma c[33], a0[1], b0[4], c[33];
+  ffma c[34], a0[2], b0[4], c[34];
+  ffma c[35], a0[3], b0[4], c[35];
+  @p0 ldg.128.constant.gpu A_fragment[0:3], [loadA_ptr];
+  ffma c[36], a0[4], b0[4], c[36];
+  ffma c[37], a0[5], b0[4], c[37];
+  ffma c[38], a0[6], b0[4], c[38];
+  ffma c[39], a0[7], b0[4], c[39];  
+  ffma c[40], a0[0], b0[5], c[40];
+  ffma c[41], a0[1], b0[5], c[41];
+  ffma c[42], a0[2], b0[5], c[42];
+  ffma c[43], a0[3], b0[5], c[43];  
+  ffma c[44], a0[4], b0[5], c[44];
+  ffma c[45], a0[5], b0[5], c[45]; 
+  
+  ffma c[46], a0[6], b0[5], c[46];
+  ffma c[47], a0[7], b0[5], c[47];
+  ffma c[48], a0[0], b0[6], c[48];
+  ffma c[49], a0[1], b0[6], c[49];
+  ffma c[50], a0[2], b0[6], c[50];  
+  ffma c[51], a0[3], b0[6], c[51];
+  ffma c[52], a0[4], b0[6], c[52];
+  ffma c[53], a0[5], b0[6], c[53];
+  ffma c[54], a0[6], b0[6], c[54];
+  ffma c[55], a0[7], b0[6], c[55];
+  ffma c[56], a0[0], b0[7], c[56];
+  ffma c[57], a0[1], b0[7], c[57];
+  ffma c[58], a0[2], b0[7], c[58];
+  ffma c[59], a0[3], b0[7], c[59];
+  ffma c[60], a0[4], b0[7], c[60];
+  ffma c[61], a0[5], b0[7], c[61];
+  ffma c[62], a0[6], b0[7], c[62];
+  ffma c[63], a0[7], b0[7], c[63];
+  
+  
+  // k=1
+  ffma c[0], a1[0], b1[0], c[0];
+  lds.128 a0[0:3], [loadAs_ptr+1024];
+  ffma c[1], a1[1], b1[0], c[1];  
+  ffma c[2], a1[2], b1[0], c[2];
+  lds.128 a0[4:7], [loadAs_ptr+1152];
+  ffma c[3], a1[3], b1[0], c[3];  
+  ffma c[4], a1[4], b1[0], c[4];
+  lds.128 b0[0:3], [loadBs_ptr+1024];
+  ffma c[5], a1[5], b1[0], c[5];  
+  ffma c[6], a1[6], b1[0], c[6];
+  lds.128 b0[4:7], [loadBs_ptr+1088];
+  ffma c[7], a1[7], b1[0], c[7];  
+  ffma c[8], a1[0], b1[1], c[8];
+  ffma c[9], a1[1], b1[1], c[9];
+  ffma c[10], a1[2], b1[1], c[10];
+  ffma c[11], a1[3], b1[1], c[11];  
+  ffma c[12], a1[4], b1[1], c[12];
+  ffma c[13], a1[5], b1[1], c[13];
+  ffma c[14], a1[6], b1[1], c[14];
+  ffma c[15], a1[7], b1[1], c[15];  
+  ffma c[16], a1[0], b1[2], c[16];
+  ffma c[17], a1[1], b1[2], c[17];
+  ffma c[18], a1[2], b1[2], c[18];
+  ffma c[19], a1[3], b1[2], c[19];  
+  ffma c[20], a1[4], b1[2], c[20];
+  ffma c[21], a1[5], b1[2], c[21];
+  ffma c[22], a1[6], b1[2], c[22];
+  ffma c[23], a1[7], b1[2], c[23];
+  ffma c[24], a1[0], b1[3], c[24];
+  ffma c[25], a1[1], b1[3], c[25];
+  ffma c[26], a1[2], b1[3], c[26];
+  ffma c[27], a1[3], b1[3], c[27];
+  @p0 imad.wide loadB_ptr, size_float_8, n, loadB_ptr;
+  ffma c[28], a1[4], b1[3], c[28];
+  ffma c[29], a1[5], b1[3], c[29];
+  ffma c[30], a1[6], b1[3], c[30];
+  ffma c[31], a1[7], b1[3], c[31];
+  ffma c[32], a1[0], b1[4], c[32];
+  ffma c[33], a1[1], b1[4], c[33];  
+  ffma c[34], a1[2], b1[4], c[34];
+  ffma c[35], a1[3], b1[4], c[35];
+  ffma c[36], a1[4], b1[4], c[36];
+  ffma c[37], a1[5], b1[4], c[37];
+  ffma c[38], a1[6], b1[4], c[38];
+  ffma c[39], a1[7], b1[4], c[39];
+  @p0 ldg.128.constant.gpu B_fragment[0:3], [loadB_ptr];
+  ffma c[40], a1[0], b1[5], c[40];
+  ffma c[41], a1[1], b1[5], c[41];
+  ffma c[42], a1[2], b1[5], c[42];
+  ffma c[43], a1[3], b1[5], c[43];
+  ffma c[44], a1[4], b1[5], c[44];
+  ffma c[45], a1[5], b1[5], c[45];
+  ffma c[46], a1[6], b1[5], c[46];
+  ffma c[47], a1[7], b1[5], c[47];
+  ffma c[48], a1[0], b1[6], c[48];  
+  ffma c[49], a1[1], b1[6], c[49];
+  ffma c[50], a1[2], b1[6], c[50];
+  ffma c[51], a1[3], b1[6], c[51];
+  ffma c[52], a1[4], b1[6], c[52];
+  ffma c[53], a1[5], b1[6], c[53];
+  ffma c[54], a1[6], b1[6], c[54];
+  ffma c[55], a1[7], b1[6], c[55];
+  ffma c[56], a1[0], b1[7], c[56];
+  ffma c[57], a1[1], b1[7], c[57];
+  ffma c[58], a1[2], b1[7], c[58];
+  ffma c[59], a1[3], b1[7], c[59];
+  ffma c[60], a1[4], b1[7], c[60];
+  ffma c[61], a1[5], b1[7], c[61];
+  ffma c[62], a1[6], b1[7], c[62];
+  ffma c[63], a1[7], b1[7], c[63];
+  
+  
+  
+  
+  // k=2
+  ffma c[0], a0[0], b0[0], c[0];
+  ffma c[1], a0[1], b0[0], c[1];
+  lds.128 b1[0:3], [loadBs_ptr+1536];
+  ffma c[2], a0[2], b0[0], c[2];
+  ffma c[3], a0[3], b0[0], c[3];
+  lds.128 b1[4:7], [loadBs_ptr+1600];
+  ffma c[4], a0[4], b0[0], c[4];
+  ffma c[5], a0[5], b0[0], c[5];
+  lds.128 a1[0:3], [loadAs_ptr+1536];
+  ffma c[6], a0[6], b0[0], c[6];
+  ffma c[7], a0[7], b0[0], c[7];
+  lds.128 a1[4:7], [loadAs_ptr+1664];
+  ffma c[8], a0[0], b0[1], c[8];
+  ffma c[9], a0[1], b0[1], c[9];
+  ffma c[10], a0[2], b0[1], c[10];
+  ffma c[11], a0[3], b0[1], c[11];
+  ffma c[12], a0[4], b0[1], c[12];  
+  ffma c[13], a0[5], b0[1], c[13];
+  ffma c[14], a0[6], b0[1], c[14];
+  ffma c[15], a0[7], b0[1], c[15];  
+  ffma c[16], a0[0], b0[2], c[16];
+  ffma c[17], a0[1], b0[2], c[17];
+  ffma c[18], a0[2], b0[2], c[18];
+  ffma c[19], a0[3], b0[2], c[19];
+  ffma c[20], a0[4], b0[2], c[20];
+  ffma c[21], a0[5], b0[2], c[21];
+  ffma c[22], a0[6], b0[2], c[22];
+  ffma c[23], a0[7], b0[2], c[23];
+  ffma c[24], a0[0], b0[3], c[24];
+  ffma c[25], a0[1], b0[3], c[25];
+  ffma c[26], a0[2], b0[3], c[26];
+  ffma c[27], a0[3], b0[3], c[27];
+  ffma c[28], a0[4], b0[3], c[28];
+  ffma c[29], a0[5], b0[3], c[29];
+  ffma c[30], a0[6], b0[3], c[30];
+  ffma c[31], a0[7], b0[3], c[31];
+  ffma c[32], a0[0], b0[4], c[32];
+  ffma c[33], a0[1], b0[4], c[33];
+  ffma c[34], a0[2], b0[4], c[34];
+  ffma c[35], a0[3], b0[4], c[35];
+  ffma c[36], a0[4], b0[4], c[36];
+  ffma c[37], a0[5], b0[4], c[37];
+  ffma c[38], a0[6], b0[4], c[38];
+  ffma c[39], a0[7], b0[4], c[39];
+  ffma c[40], a0[0], b0[5], c[40];
+  
+  ffma c[41], a0[1], b0[5], c[41];
+  ffma c[42], a0[2], b0[5], c[42];
+  ffma c[43], a0[3], b0[5], c[43];
+  ffma c[44], a0[4], b0[5], c[44];
+  ffma c[45], a0[5], b0[5], c[45];
+  ffma c[46], a0[6], b0[5], c[46];
+  ffma c[47], a0[7], b0[5], c[47];
+  ffma c[48], a0[0], b0[6], c[48];
+  ffma c[49], a0[1], b0[6], c[49];
+  ffma c[50], a0[2], b0[6], c[50];
+  ffma c[51], a0[3], b0[6], c[51];
+  ffma c[52], a0[4], b0[6], c[52];
+  ffma c[53], a0[5], b0[6], c[53];
+  ffma c[54], a0[6], b0[6], c[54];
+  ffma c[55], a0[7], b0[6], c[55];
+  ffma c[56], a0[0], b0[7], c[56];
+  ffma c[57], a0[1], b0[7], c[57];
+  ffma c[58], a0[2], b0[7], c[58];
+  ffma c[59], a0[3], b0[7], c[59];
+  ffma c[60], a0[4], b0[7], c[60];
+  ffma c[61], a0[5], b0[7], c[61];
+  ffma c[62], a0[6], b0[7], c[62];
+  ffma c[63], a0[7], b0[7], c[63];
+  
+  // k=3
+  ffma c[0], a1[0], b1[0], c[0];
+  lds.128 b0[0:3], [loadBs_ptr+2048];
+  ffma c[1], a1[1], b1[0], c[1];  
+  ffma c[2], a1[2], b1[0], c[2];
+  lds.128 b0[4:7], [loadBs_ptr+2112];
+  ffma c[3], a1[3], b1[0], c[3];  
+  ffma c[4], a1[4], b1[0], c[4];
+  lds.128 a0[0:3], [loadAs_ptr+2048];
+  ffma c[5], a1[5], b1[0], c[5];  
+  ffma c[6], a1[6], b1[0], c[6];
+  lds.128 a0[4:7], [loadAs_ptr+2176];
+  ffma c[7], a1[7], b1[0], c[7];  
+  ffma c[8], a1[0], b1[1], c[8];
+  ffma c[9], a1[1], b1[1], c[9];
+  ffma c[10], a1[2], b1[1], c[10];
+  
+  ffma c[11], a1[3], b1[1], c[11];
+  ffma c[12], a1[4], b1[1], c[12];
+  ffma c[13], a1[5], b1[1], c[13];
+  ffma c[14], a1[6], b1[1], c[14];
+  
+  ffma c[15], a1[7], b1[1], c[15];
+  ffma c[16], a1[0], b1[2], c[16];
+  ffma c[17], a1[1], b1[2], c[17];
+  ffma c[18], a1[2], b1[2], c[18];
+  ffma c[19], a1[3], b1[2], c[19];
+  ffma c[20], a1[4], b1[2], c[20];
+  ffma c[21], a1[5], b1[2], c[21];
+  ffma c[22], a1[6], b1[2], c[22];
+  ffma c[23], a1[7], b1[2], c[23];
+  ffma c[24], a1[0], b1[3], c[24];
+  ffma c[25], a1[1], b1[3], c[25];
+  ffma c[26], a1[2], b1[3], c[26];
+  ffma c[27], a1[3], b1[3], c[27];
+  ffma c[28], a1[4], b1[3], c[28];
+  ffma c[29], a1[5], b1[3], c[29];
+  ffma c[30], a1[6], b1[3], c[30];
+  ffma c[31], a1[7], b1[3], c[31];
+  ffma c[32], a1[0], b1[4], c[32];
+  ffma c[33], a1[1], b1[4], c[33];
+  ffma c[34], a1[2], b1[4], c[34];
+  ffma c[35], a1[3], b1[4], c[35];
+  ffma c[36], a1[4], b1[4], c[36];
+  ffma c[37], a1[5], b1[4], c[37];
+  ffma c[38], a1[6], b1[4], c[38];
+  ffma c[39], a1[7], b1[4], c[39];
+  ffma c[40], a1[0], b1[5], c[40];
+  ffma c[41], a1[1], b1[5], c[41];
+  ffma c[42], a1[2], b1[5], c[42];
+  ffma c[43], a1[3], b1[5], c[43];
+  ffma c[44], a1[4], b1[5], c[44];
+  ffma c[45], a1[5], b1[5], c[45];
+  ffma c[46], a1[6], b1[5], c[46];
+  ffma c[47], a1[7], b1[5], c[47];
+  ffma c[48], a1[0], b1[6], c[48];
+  ffma c[49], a1[1], b1[6], c[49];
+  ffma c[50], a1[2], b1[6], c[50];
+  ffma c[51], a1[3], b1[6], c[51];
+  ffma c[52], a1[4], b1[6], c[52];
+  ffma c[53], a1[5], b1[6], c[53];
+  ffma c[54], a1[6], b1[6], c[54];
+  ffma c[55], a1[7], b1[6], c[55];
+  ffma c[56], a1[0], b1[7], c[56];
+  ffma c[57], a1[1], b1[7], c[57];
+  ffma c[58], a1[2], b1[7], c[58];
+  ffma c[59], a1[3], b1[7], c[59];
+  ffma c[60], a1[4], b1[7], c[60];
+  ffma c[61], a1[5], b1[7], c[61];
+  ffma c[62], a1[6], b1[7], c[62];
+  ffma c[63], a1[7], b1[7], c[63];
+  
+  // k=4
+  ffma c[0], a0[0], b0[0], c[0];
+  lds.128 b1[0:3], [loadBs_ptr+2560];
+  ffma c[1], a0[1], b0[0], c[1];  
+  ffma c[2], a0[2], b0[0], c[2];
+  lds.128 b1[4:7], [loadBs_ptr+2624];
+  ffma c[3], a0[3], b0[0], c[3];
+  ffma c[4], a0[4], b0[0], c[4];
+  lds.128 a1[0:3], [loadAs_ptr+2560];
+  ffma c[5], a0[5], b0[0], c[5];  
+  ffma c[6], a0[6], b0[0], c[6];
+  lds.128 a1[4:7], [loadAs_ptr+2688];
+  ffma c[7], a0[7], b0[0], c[7];
+  ffma c[8], a0[0], b0[1], c[8];
+  ffma c[9], a0[1], b0[1], c[9];
+  ffma c[10], a0[2], b0[1], c[10];
+  ffma c[11], a0[3], b0[1], c[11];  
+  ffma c[12], a0[4], b0[1], c[12];
+  ffma c[13], a0[5], b0[1], c[13];
+  ffma c[14], a0[6], b0[1], c[14];
+  ffma c[15], a0[7], b0[1], c[15];  
+  ffma c[16], a0[0], b0[2], c[16];
+  ffma c[17], a0[1], b0[2], c[17];
+  ffma c[18], a0[2], b0[2], c[18];
+  ffma c[19], a0[3], b0[2], c[19];
+  ffma c[20], a0[4], b0[2], c[20];
+  ffma c[21], a0[5], b0[2], c[21];
+  ffma c[22], a0[6], b0[2], c[22];
+  ffma c[23], a0[7], b0[2], c[23];
+  ffma c[24], a0[0], b0[3], c[24];
+  ffma c[25], a0[1], b0[3], c[25];
+  ffma c[26], a0[2], b0[3], c[26];
+  ffma c[27], a0[3], b0[3], c[27];
+  ffma c[28], a0[4], b0[3], c[28];
+  ffma c[29], a0[5], b0[3], c[29];
+  ffma c[30], a0[6], b0[3], c[30];
+  ffma c[31], a0[7], b0[3], c[31];
+  ffma c[32], a0[0], b0[4], c[32];
+  ffma c[33], a0[1], b0[4], c[33];
+  ffma c[34], a0[2], b0[4], c[34];
+  ffma c[35], a0[3], b0[4], c[35];
+  ffma c[36], a0[4], b0[4], c[36];
+  ffma c[37], a0[5], b0[4], c[37];
+  ffma c[38], a0[6], b0[4], c[38];
+  ffma c[39], a0[7], b0[4], c[39];
+  ffma c[40], a0[0], b0[5], c[40];
+  ffma c[41], a0[1], b0[5], c[41];
+  ffma c[42], a0[2], b0[5], c[42];
+  ffma c[43], a0[3], b0[5], c[43];
+  ffma c[44], a0[4], b0[5], c[44];
+  ffma c[45], a0[5], b0[5], c[45];
+  ffma c[46], a0[6], b0[5], c[46];
+  ffma c[47], a0[7], b0[5], c[47];
+  ffma c[48], a0[0], b0[6], c[48];
+  ffma c[49], a0[1], b0[6], c[49];
+  ffma c[50], a0[2], b0[6], c[50];
+  ffma c[51], a0[3], b0[6], c[51];
+  ffma c[52], a0[4], b0[6], c[52];
+  ffma c[53], a0[5], b0[6], c[53];
+  ffma c[54], a0[6], b0[6], c[54];
+  ffma c[55], a0[7], b0[6], c[55];
+  ffma c[56], a0[0], b0[7], c[56];
+  ffma c[57], a0[1], b0[7], c[57];
+  ffma c[58], a0[2], b0[7], c[58];
+  ffma c[59], a0[3], b0[7], c[59];
+  ffma c[60], a0[4], b0[7], c[60];
+  ffma c[61], a0[5], b0[7], c[61];
+  ffma c[62], a0[6], b0[7], c[62];
+  ffma c[63], a0[7], b0[7], c[63];
+  
+  // k=5
+  ffma c[0], a1[0], b1[0], c[0];
+  lds.128 b0[0:3], [loadBs_ptr+3072];
+  ffma c[1], a1[1], b1[0], c[1];
+  
+  ffma c[2], a1[2], b1[0], c[2];
+  lds.128 b0[4:7], [loadBs_ptr+3136];
+  ffma c[3], a1[3], b1[0], c[3];  
+  ffma c[4], a1[4], b1[0], c[4];
+  lds.128 a0[0:3], [loadAs_ptr+3072];
+  ffma c[5], a1[5], b1[0], c[5];
+  
+  ffma c[6], a1[6], b1[0], c[6];
+  lds.128 a0[4:7], [loadAs_ptr+3200];
+  ffma c[7], a1[7], b1[0], c[7];  
+  ffma c[8], a1[0], b1[1], c[8];
+  ffma c[9], a1[1], b1[1], c[9];
+  ffma c[10], a1[2], b1[1], c[10];
+  ffma c[11], a1[3], b1[1], c[11];
+  
+  ffma c[12], a1[4], b1[1], c[12];
+  ffma c[13], a1[5], b1[1], c[13];
+  ffma c[14], a1[6], b1[1], c[14];
+  ffma c[15], a1[7], b1[1], c[15];
+  
+  ffma c[16], a1[0], b1[2], c[16];
+  ffma c[17], a1[1], b1[2], c[17];
+  ffma c[18], a1[2], b1[2], c[18];
+  ffma c[19], a1[3], b1[2], c[19];
+  ffma c[20], a1[4], b1[2], c[20];
+  ffma c[21], a1[5], b1[2], c[21];
+  ffma c[22], a1[6], b1[2], c[22];
+  ffma c[23], a1[7], b1[2], c[23];
+  ffma c[24], a1[0], b1[3], c[24];
+  ffma c[25], a1[1], b1[3], c[25];
+  ffma c[26], a1[2], b1[3], c[26];
+  ffma c[27], a1[3], b1[3], c[27];
+  ffma c[28], a1[4], b1[3], c[28];
+  ffma c[29], a1[5], b1[3], c[29];
+  ffma c[30], a1[6], b1[3], c[30];
+  ffma c[31], a1[7], b1[3], c[31];
+  ffma c[32], a1[0], b1[4], c[32];
+  ffma c[33], a1[1], b1[4], c[33];
+  ffma c[34], a1[2], b1[4], c[34];
+  ffma c[35], a1[3], b1[4], c[35];
+  ffma c[36], a1[4], b1[4], c[36];
+  ffma c[37], a1[5], b1[4], c[37];
+  ffma c[38], a1[6], b1[4], c[38];
+  ffma c[39], a1[7], b1[4], c[39];
+  ffma c[40], a1[0], b1[5], c[40];
+  @p0 sts.128 [storeAs_ptr], A_fragment[0:3];
+  ffma c[41], a1[1], b1[5], c[41];
+  ffma c[42], a1[2], b1[5], c[42];
+  ffma c[43], a1[3], b1[5], c[43];
+  ffma c[44], a1[4], b1[5], c[44];
+  ffma c[45], a1[5], b1[5], c[45];
+  ffma c[46], a1[6], b1[5], c[46];
+  ffma c[47], a1[7], b1[5], c[47];
+  ffma c[48], a1[0], b1[6], c[48];
+  ffma c[49], a1[1], b1[6], c[49];
+  ffma c[50], a1[2], b1[6], c[50];
+  ffma c[51], a1[3], b1[6], c[51];
+  ffma c[52], a1[4], b1[6], c[52];
+  ffma c[53], a1[5], b1[6], c[53];
+  ffma c[54], a1[6], b1[6], c[54];
+  ffma c[55], a1[7], b1[6], c[55];
+  ffma c[56], a1[0], b1[7], c[56];
+  ffma c[57], a1[1], b1[7], c[57];
+  ffma c[58], a1[2], b1[7], c[58];
+  ffma c[59], a1[3], b1[7], c[59];
+  ffma c[60], a1[4], b1[7], c[60];
+  ffma c[61], a1[5], b1[7], c[61];
+  ffma c[62], a1[6], b1[7], c[62];
+  ffma c[63], a1[7], b1[7], c[63];
+  
+  // k=6
+  ffma c[0], a0[0], b0[0], c[0];
+  lds.128 a1[0:3], [loadAs_ptr+3584];
+  ffma c[1], a0[1], b0[0], c[1];  
+  ffma c[2], a0[2], b0[0], c[2];
+  lds.128 a1[4:7], [loadAs_ptr+3712];
+  ffma c[3], a0[3], b0[0], c[3];  
+  ffma c[4], a0[4], b0[0], c[4];
+  lds.128 b1[0:3], [loadBs_ptr+3584];
+  ffma c[5], a0[5], b0[0], c[5];  
+  ffma c[6], a0[6], b0[0], c[6];
+  lds.128 b1[4:7], [loadBs_ptr+3648];
+  ffma c[7], a0[7], b0[0], c[7];  
+  ffma c[8], a0[0], b0[1], c[8];
+  ffma c[9], a0[1], b0[1], c[9];
+  ffma c[10], a0[2], b0[1], c[10];  
+  ffma c[11], a0[3], b0[1], c[11];
+  ffma c[12], a0[4], b0[1], c[12];
+  ffma c[13], a0[5], b0[1], c[13];
+  ffma c[14], a0[6], b0[1], c[14];  
+  ffma c[15], a0[7], b0[1], c[15];
+  ffma c[16], a0[0], b0[2], c[16];
+  ffma c[17], a0[1], b0[2], c[17];
+  ffma c[18], a0[2], b0[2], c[18];
+  ffma c[19], a0[3], b0[2], c[19];
+  ffma c[20], a0[4], b0[2], c[20];
+  ffma c[21], a0[5], b0[2], c[21];
+  ffma c[22], a0[6], b0[2], c[22];
+  ffma c[23], a0[7], b0[2], c[23];
+  ffma c[24], a0[0], b0[3], c[24];
+  ffma c[25], a0[1], b0[3], c[25];
+  ffma c[26], a0[2], b0[3], c[26];
+  ffma c[27], a0[3], b0[3], c[27];
+  ffma c[28], a0[4], b0[3], c[28];
+  ffma c[29], a0[5], b0[3], c[29];
+  ffma c[30], a0[6], b0[3], c[30];
+  ffma c[31], a0[7], b0[3], c[31];
+  ffma c[32], a0[0], b0[4], c[32];
+  ffma c[33], a0[1], b0[4], c[33];
+  ffma c[34], a0[2], b0[4], c[34];
+  ffma c[35], a0[3], b0[4], c[35];
+  ffma c[36], a0[4], b0[4], c[36];
+  ffma c[37], a0[5], b0[4], c[37];
+  ffma c[38], a0[6], b0[4], c[38];
+  ffma c[39], a0[7], b0[4], c[39];
+  ffma c[40], a0[0], b0[5], c[40];
+  ffma c[41], a0[1], b0[5], c[41];
+  ffma c[42], a0[2], b0[5], c[42];
+  @p0 sts.128 [storeBs_ptr], B_fragment[0:3];
+  ffma c[43], a0[3], b0[5], c[43];
+  ffma c[44], a0[4], b0[5], c[44];
+  ffma c[45], a0[5], b0[5], c[45];
+  ffma c[46], a0[6], b0[5], c[46];
+  ffma c[47], a0[7], b0[5], c[47];
+  ffma c[48], a0[0], b0[6], c[48];
+  ffma c[49], a0[1], b0[6], c[49];
+  ffma c[50], a0[2], b0[6], c[50];
+  ffma c[51], a0[3], b0[6], c[51];
+  ffma c[52], a0[4], b0[6], c[52];
+  ffma c[53], a0[5], b0[6], c[53];
+  ffma c[54], a0[6], b0[6], c[54];
+  ffma c[55], a0[7], b0[6], c[55];
+  ffma c[56], a0[0], b0[7], c[56];
+  ffma c[57], a0[1], b0[7], c[57];
+  @p0 bar.sync;
+  ffma c[58], a0[2], b0[7], c[58];
+  ffma c[59], a0[3], b0[7], c[59];
+  ffma c[60], a0[4], b0[7], c[60];
+  ffma c[61], a0[5], b0[7], c[61];
+  ffma c[62], a0[6], b0[7], c[62];
+  ffma c[63], a0[7], b0[7], c[63];
+
+  // k=7
+  ffma c[0], a1[0], b1[0], c[0];
+  ffma c[1], a1[1], b1[0], c[1];
+  ffma c[2], a1[2], b1[0], c[2];
+  ffma c[3], a1[3], b1[0], c[3];
+  ffma c[4], a1[4], b1[0], c[4];
+  ffma c[5], a1[5], b1[0], c[5];
+  ffma c[6], a1[6], b1[0], c[6];
+  ffma c[7], a1[7], b1[0], c[7];
+  ffma c[8], a1[0], b1[1], c[8];
+  
+  ffma c[9], a1[1], b1[1], c[9];
+  @p0 lop3.lut loadAs_ptr, loadAs_ptr, 8192, rz, 60;
+  ffma c[10], a1[2], b1[1], c[10];
+  @p0 lop3.lut loadBs_ptr, loadBs_ptr, 8192, rz, 60;
+  ffma c[11], a1[3], b1[1], c[11];
+  @p0 lop3.lut storeAs_ptr, storeAs_ptr, 8192, rz, 60;
+  ffma c[12], a1[4], b1[1], c[12];
+  @p0 lop3.lut storeBs_ptr, storeBs_ptr, 8192, rz, 60;
+  ffma c[13], a1[5], b1[1], c[13];
+  ffma c[14], a1[6], b1[1], c[14];
+  ffma c[15], a1[7], b1[1], c[15];
+  ffma c[16], a1[0], b1[2], c[16];
+  ffma c[17], a1[1], b1[2], c[17];
+  ffma c[18], a1[2], b1[2], c[18];
+  @p0 lds.128 a0[0:3], [loadAs_ptr];
+  ffma c[19], a1[3], b1[2], c[19];
+  ffma c[20], a1[4], b1[2], c[20];
+  @p0 lds.128 a0[4:7], [loadAs_ptr+128];
+  ffma c[21], a1[5], b1[2], c[21];
+  ffma c[22], a1[6], b1[2], c[22];
+  @p0 lds.128 b0[0:3], [loadBs_ptr+0];
+  ffma c[23], a1[7], b1[2], c[23];
+  ffma c[24], a1[0], b1[3], c[24];
+  @p0 lds.128 b0[4:7], [loadBs_ptr+64];
+  ffma c[25], a1[1], b1[3], c[25];
+  ffma c[26], a1[2], b1[3], c[26];
+  ffma c[27], a1[3], b1[3], c[27];
+  ffma c[28], a1[4], b1[3], c[28];
+  ffma c[29], a1[5], b1[3], c[29];  
+  ffma c[30], a1[6], b1[3], c[30];
+  ffma c[31], a1[7], b1[3], c[31];
+  ffma c[32], a1[0], b1[4], c[32];
+  ffma c[33], a1[1], b1[4], c[33];
+  ffma c[34], a1[2], b1[4], c[34];
+  ffma c[35], a1[3], b1[4], c[35];
+  ffma c[36], a1[4], b1[4], c[36];
+  ffma c[37], a1[5], b1[4], c[37];  
+  ffma c[38], a1[6], b1[4], c[38];
+  ffma c[39], a1[7], b1[4], c[39];
+  ffma c[40], a1[0], b1[5], c[40];
+  ffma c[41], a1[1], b1[5], c[41];
+  ffma c[42], a1[2], b1[5], c[42];
+  ffma c[43], a1[3], b1[5], c[43];
+  ffma c[44], a1[4], b1[5], c[44];
+  ffma c[45], a1[5], b1[5], c[45];
+  ffma c[46], a1[6], b1[5], c[46];
+  ffma c[47], a1[7], b1[5], c[47];
+  ffma c[48], a1[0], b1[6], c[48];
+  ffma c[49], a1[1], b1[6], c[49];
+  ffma c[50], a1[2], b1[6], c[50];
+  ffma c[51], a1[3], b1[6], c[51];
+  ffma c[52], a1[4], b1[6], c[52];
+  ffma c[53], a1[5], b1[6], c[53];
+  ffma c[54], a1[6], b1[6], c[54];
+  ffma c[55], a1[7], b1[6], c[55];
+  ffma c[56], a1[0], b1[7], c[56];
+  ffma c[57], a1[1], b1[7], c[57];
+  ffma c[58], a1[2], b1[7], c[58];
+  ffma c[59], a1[3], b1[7], c[59];
+  ffma c[60], a1[4], b1[7], c[60];
+  ffma c[61], a1[5], b1[7], c[61];
+  ffma c[62], a1[6], b1[7], c[62];
+  ffma c[63], a1[7], b1[7], c[63];
+  
+  
+  @p0 bra l1;
+  
+  
+  s64 storeC_ptr;
+  s32 size_float_c;
+  mov size_float_c, 4;
+  
+  imad.wide storeC_ptr, storeC_offset, size_float_c, C;
+  
+  stg.128 [storeC_ptr], c[0:3];
+  stg.128 [storeC_ptr+128], c[4:7];
+  imad.wide storeC_ptr, size_float_c, m, storeC_ptr;
+  stg.128 [storeC_ptr], c[8:11];
+  stg.128 [storeC_ptr+128], c[12:15];
+  imad.wide storeC_ptr, size_float_c, m, storeC_ptr;
+  stg.128 [storeC_ptr], c[16:19];
+  stg.128 [storeC_ptr+128], c[20:23];
+  imad.wide storeC_ptr, size_float_c, m, storeC_ptr;
+  stg.128 [storeC_ptr], c[24:27];
+  stg.128 [storeC_ptr+128], c[28:31];
+  
+  s32 imm_52;
+  mov imm_52, 52; // 52=13*sizeof(float)
+  imad.wide storeC_ptr, imm_52, m, storeC_ptr;  
+  
+  stg.128 [storeC_ptr], c[32:35];
+  stg.128 [storeC_ptr+128], c[36:39];
+  imad.wide storeC_ptr, size_float_c, m, storeC_ptr;
+  stg.128 [storeC_ptr], c[40:43];
+  stg.128 [storeC_ptr+128], c[44:47];
+  imad.wide storeC_ptr, size_float_c, m, storeC_ptr;
+  stg.128 [storeC_ptr], c[48:51];
+  stg.128 [storeC_ptr+128], c[52:55];
+  imad.wide storeC_ptr, size_float_c, m, storeC_ptr;
+  stg.128 [storeC_ptr], c[56:59];
+  stg.128 [storeC_ptr+128], c[60:63];
+  
+  exit;
+  }
+  
+  

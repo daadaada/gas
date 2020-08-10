@@ -1,0 +1,22 @@
+build/
+tmp/
+fig/
+
+# examples
+copy
+cta_copy
+saxpy
+# hgemm
+# sgemm
+
+*.cubin
+*.out
+*.nsight-cuprof-report
+*.sass
+
+# antrl
+.antlr
+grammar/generated/
+
+# temporary files
+todo.md 

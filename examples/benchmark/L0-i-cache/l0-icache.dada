@@ -1,0 +1,6851 @@
+
+  list0(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+    
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list1(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list2(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list3(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list4(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list5(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list6(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list7(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list8(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list9(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list10(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list11(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list12(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list13(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list14(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list15(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list16(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list17(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list18(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list19(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list20(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list21(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list22(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list23(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list24(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list25(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list26(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list27(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list28(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list29(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list30(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list31(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list32(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list33(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list34(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list35(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list36(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list37(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list38(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list39(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list40(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list41(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list42(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list43(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list44(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list45(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list46(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list47(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list48(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list49(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list50(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list51(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list52(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list53(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list54(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list55(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list56(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list57(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list58(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list59(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list60(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list61(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list62(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list63(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list64(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list65(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list66(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list67(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list68(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list69(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list70(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list71(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list72(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list73(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list74(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list75(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list76(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list77(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list78(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list79(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list80(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list81(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list82(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list83(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list84(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list85(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list86(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list87(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list88(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list89(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list90(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list91(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list92(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list93(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list94(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list95(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list96(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list97(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list98(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+  list99(s64 result){
+    s32 start, end;
+    cs2r.32 start, clock_lo;
+   nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop;
+nop; 
+  cs2r.32 end, clock_lo;
+
+  s32 time;
+  iadd3 time, -start, end, rz;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, result;
+
+  stg.32 [ptr], time;
+  exit;
+}
+

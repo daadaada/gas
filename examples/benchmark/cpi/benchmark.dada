@@ -1,0 +1,617 @@
+ffma_cpi(s64 A){
+  s32 start, end, time;
+  
+  f32 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  ffma c, a, b, d;
+  ffma c, a, b, d;
+  ffma c, a, b, d;
+  ffma c, a, b, d;
+  ffma c, a, b, d;
+  ffma c, a, b, d;
+  ffma c, a, b, d;
+  ffma c, a, b, d;
+  ffma c, a, b, d;
+  ffma c, a, b, d;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+fadd_cpi(s64 A){
+  s32 start, end, time;
+  
+  f32 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  fadd c, a, b;
+  fadd c, a, b;
+  fadd c, a, b;
+  fadd c, a, b;
+  fadd c, a, b;
+  fadd c, a, b;
+  fadd c, a, b;
+  fadd c, a, b;
+  fadd c, a, b;
+  fadd c, a, b;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+hadd2_cpi(s64 A){
+  s32 start, end, time;
+  
+  f16x2 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+hfma2_cpi(s64 A){
+  s32 start, end, time;
+  
+  f16x2 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  hfma2 c, a, b, d;
+  hfma2 c, a, b, d;
+  hfma2 c, a, b, d;
+  hfma2 c, a, b, d;
+  hfma2 c, a, b, d;
+  hfma2 c, a, b, d;
+  hfma2 c, a, b, d;
+  hfma2 c, a, b, d;
+  hfma2 c, a, b, d;
+  hfma2 c, a, b, d;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+// dadd_cpi(s64 A){
+
+// }
+
+// dfma_cpi(s64 A){
+
+// }
+
+iadd3_cpi(s64 A){
+  s32 start, end, time;
+  
+  s32 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  iadd3 c, a, b, d;
+  iadd3 c, a, b, d;
+  iadd3 c, a, b, d;
+  iadd3 c, a, b, d;
+  iadd3 c, a, b, d;
+  iadd3 c, a, b, d;
+  iadd3 c, a, b, d;
+  iadd3 c, a, b, d;
+  iadd3 c, a, b, d;
+  iadd3 c, a, b, d;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+lea_cpi(s64 A){
+  s32 start, end, time;
+  
+  s32 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  lea c, a, b, 1;
+  lea c, a, b, 1;
+  lea c, a, b, 1;
+  lea c, a, b, 1;
+  lea c, a, b, 1;
+  lea c, a, b, 1;
+  lea c, a, b, 1;
+  lea c, a, b, 1;
+  lea c, a, b, 1;
+  lea c, a, b, 1;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+imad_cpi(s64 A){
+  s32 start, end, time;
+  
+  s32 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  imad c, a, b, d;
+  imad c, a, b, d;
+  imad c, a, b, d;
+  imad c, a, b, d;
+  imad c, a, b, d;
+  imad c, a, b, d;
+  imad c, a, b, d;
+  imad c, a, b, d;
+  imad c, a, b, d;
+  imad c, a, b, d;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+imad_wide_cpi(s64 A){
+  s32 start, end, time;
+  
+  s32 a, b;
+  s64 c, d;
+  
+  cs2r.32 start, clock_lo;
+  // no bank conflict: 18
+  // with bank conflict: 30
+  imad.wide c, rz, rz, d;
+  imad.wide c, rz, rz, d;
+  imad.wide c, rz, rz, d;
+  imad.wide c, rz, rz, d;
+  imad.wide c, rz, rz, d;
+  imad.wide c, rz, rz, d;
+  imad.wide c, rz, rz, d;
+  imad.wide c, rz, rz, d;
+  imad.wide c, rz, rz, d;
+  imad.wide c, rz, rz, d;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.64 [sts_ptr], c;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+// imma_cpi(s64 A){
+
+// }
+
+// bmma_cpi(s64 A){
+
+// }
+
+hmma_cpi(s64 A){
+  s32 start, end, time;
+  
+  f32 b;
+  f64 a, c, d;
+  
+  cs2r.32 start, clock_lo;
+  hmma.1688.f16 c, a, b, d;
+  hmma.1688.f16 c, a, b, d;
+  hmma.1688.f16 c, a, b, d;
+  hmma.1688.f16 c, a, b, d;
+  hmma.1688.f16 c, a, b, d;
+  hmma.1688.f16 c, a, b, d;
+  hmma.1688.f16 c, a, b, d;
+  hmma.1688.f16 c, a, b, d;
+  hmma.1688.f16 c, a, b, d;
+  hmma.1688.f16 c, a, b, d;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.64 [sts_ptr], c;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+
+// Mix of different instructions.
+ffma_hadd2(s64 A) {
+  s32 start, end, time;
+  
+  f16x2 a_, b_, c_, d_;
+
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  
+  f32 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  hadd2 c_, a_, b_;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+  sts.32 [sts_ptr], c_;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+ffma_imad(s64 A) {
+  s32 start, end, time;
+  
+  s32 a_, b_, c_, d_;
+
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  
+  f32 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  imad c_, a_, b_, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+  sts.32 [sts_ptr], c_;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+ffma_iadd3(s64 A) {
+  s32 start, end, time;
+  
+  s32 a_, b_, c_, d_;
+
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  
+  f32 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  iadd3 c_, a_, b_, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+  sts.32 [sts_ptr], c_;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+ffma_lea(s64 A) {
+  s32 start, end, time;
+  
+  s32 a_, b_, c_, d_;
+
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  
+  f32 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  lea c_, a_, b_, 1;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+  sts.32 [sts_ptr], c_;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+hmma_hadd2(s64 A) {
+  s32 start, end, time;
+  
+  f64 a_, c_, d_;
+  f32 b_;
+
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  
+  f16x2 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hmma.1688.f16 c_, a_, b_, c_;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  hadd2 c, a, b;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+  sts.64 [sts_ptr], c_;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+hmma_ffma(s64 A) {
+  s32 start, end, time;
+  
+  f64 a_, c_, d_;
+  f32 b_;
+
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  
+  f32 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  hmma.1688.f16 c_, a_, b_, c_;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  ffma c, a, b, rz;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+  sts.64 [sts_ptr], c_;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
+
+hmma_iadd3(s64 A) {
+  s32 start, end, time;
+  
+  f64 a_, c_, d_;
+  f32 b_;
+
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  nop;nop;nop;nop;nop;nop;nop;nop;
+  
+  s32 a, b, c, d;
+  
+  cs2r.32 start, clock_lo;
+  iadd3 c, a, b, rz;
+  iadd3 c, a, b, rz;
+  hmma.1688.f16 c_, a_, b_, c_;
+  iadd3 c, a, b, rz;
+  iadd3 c, a, b, rz;
+  iadd3 c, a, b, rz;
+  iadd3 c, a, b, rz;
+  iadd3 c, a, b, rz;
+  iadd3 c, a, b, rz;
+  iadd3 c, a, b, rz;
+  iadd3 c, a, b, rz;
+  cs2r.32 end, clock_lo;
+  iadd3 time, -start, end, rz;
+
+  // sink
+  s32 sts_ptr;
+  mov sts_ptr, rz;
+  sts.32 [sts_ptr], c;
+  sts.64 [sts_ptr], c_;
+
+  s64 ptr;
+  s32 tid, imm4;
+  s2r tid, threadIdx_x;
+  mov imm4, 4;
+  imad.wide ptr, tid, imm4, A;
+
+  stg.32 [ptr], time;
+  exit;
+}
