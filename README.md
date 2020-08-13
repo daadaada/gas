@@ -39,3 +39,6 @@ cd examples/sgemm
 make
 ./run.sh
 ```
+
+### Troubleshooting
+If cmake cannot find ANTRL. Copy bin/antlr-4.7.2-complete.jar to /usr/local/lib/antlr-4.7.2-complete.jar
