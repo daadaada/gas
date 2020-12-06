@@ -5,6 +5,9 @@
 * g++ >= 9.2
 * nvcc >= 11.0
 
+### Target
+NVIDIA GPUs, arch >= sm_70
+
 ### Example
 ```c++
 // vector copy one element
