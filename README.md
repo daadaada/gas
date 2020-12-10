@@ -3,7 +3,7 @@
 ### Requirements
 * cmake >= 3.8
 * g++ >= 9.2
-* nvcc >= 11.0
+* nvcc >= 11.0 and nvcc 10.1 (since nvcc 11.0's support for c++17 broken)
 
 ### Target
 NVIDIA GPUs, arch >= sm_70
@@ -50,6 +50,11 @@ make
 2. hgemm (Require Turing devices)
 ```bash
 cd examples/hgemm
+# Set nvcc's and ptxas' paths
+# ptxas' path is usually /usr/local/cuda-11.0/bin/ptxas
+export PTXAS=<path/to/ptxas11.0> # We need ptxas 11.0 for better performance,
+                                 # and the support for mma instructions
+export NVCC=<path/to/nvcc10.1>   # We need nvcc 10.1 to compile c++17 code
 make
 ./run.sh
 ```

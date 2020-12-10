@@ -7,6 +7,7 @@ copy
 cta_copy
 saxpy
 examples/sgemm/sgemm
+examples/hgemm/hgemm
 examples/benchmark/cpi/benchmark
 
 *.cubin
