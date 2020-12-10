@@ -3,7 +3,7 @@
 ### Requirements
 * cmake >= 3.8
 * g++ >= 9.2
-* nvcc >= 11.0 and nvcc 10.1 (since nvcc 11.0's support for c++17 broken)
+* nvcc >= 11.0 and nvcc 10.1 (since nvcc 11.0 is incompatible with c++17)
 
 ### Target
 NVIDIA GPUs, arch >= sm_70
@@ -43,6 +43,8 @@ make # -j6
 cd examples/benchmark
 # can replace cpi with L0-i-cache/L1-i-cache
 cd cpi
+# Set target arch
+export ARCH=<arch> # e.g., export ARCH=75
 make
 ./benchmark
 ```
