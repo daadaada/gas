@@ -2,17 +2,18 @@ build/
 tmp/
 fig/
 
-# examples
+# example binaries
 copy
 cta_copy
 saxpy
-# hgemm
-# sgemm
+examples/sgemm/sgemm
+examples/benchmark/cpi/benchmark
 
 *.cubin
 *.out
 *.nsight-cuprof-report
 *.sass
+*.bin
 
 # antrl
 .antlr

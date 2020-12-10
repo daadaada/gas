@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <chrono>
 
-#include "../sgemm.cuh"
+#include "sgemm.cuh"
 
 #define TIMES 10
 
