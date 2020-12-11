@@ -1,0 +1,16 @@
+// Copy 4 elements
+
+copy(s64 dst, s64 src) {
+  // declare variables
+  b32 .v4 Fragment[4];
+  s64 LoadPtr, StorePtr;
+
+  // load parameters
+  ldc.64 LoadPtr, src;
+  ldc.64 StorePtr, dst;
+
+  // copy
+  ldg.128 Fragment[0:3], [LoadPtr];
+  stg.128 [StorePtr], Fragment[0:3];
+  exit;
+}

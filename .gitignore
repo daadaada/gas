@@ -3,7 +3,7 @@ tmp/
 fig/
 
 # example binaries
-copy
+# copy
 cta_copy
 saxpy
 examples/sgemm/sgemm

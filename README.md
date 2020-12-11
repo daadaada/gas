@@ -17,8 +17,8 @@ copy(s64 dst, s64 src) {
   s64 LoadPtr, StorePtr;
 
   // load parameters
-  ldc LoadPtr, src;
-  ldc StorePtr, dst;
+  ldc.64 LoadPtr, src;
+  ldc.64 StorePtr, dst;
 
   // copy
   ldg.128 Fragment[0:3], [LoadPtr];
